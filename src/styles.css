@@ -46,3 +46,39 @@ h6 {
 ul {
 	list-style-type: none;
 }
+
+.image-carousel {
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	& button {
+		height: fit-content;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.image-frame {
+		width: 500px;
+		height: 333px;
+		position: relative;
+		overflow: hidden;
+		border: 10px solid black;
+		margin: 10px;
+
+		& .images {
+			width: 2500px;
+			height: 333px;
+			position: absolute;
+			display: flex;
+			flex-flow: row nowrap;
+			align-items: flex-start;
+		}
+
+		& img {
+			width: 500px;
+			height: 333px;
+		}
+	}
+}
