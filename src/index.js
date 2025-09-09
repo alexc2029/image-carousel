@@ -66,14 +66,6 @@ function unfillCircle() {
 	if (filledCircle) filledCircle.classList.toggle("filled-circle");
 }
 
-function addImagesId() {
-	let id = 0;
-	for (let image of images) {
-		image.setAttribute("data-id", id);
-		id++;
-	}
-}
-
 function Timer(fn, time) {
 	let timer = setInterval(fn, time);
 
@@ -104,7 +96,6 @@ const nextImageButton = document.querySelector("button.next-image");
 previousImageButton.addEventListener("click", previousImageSlide);
 nextImageButton.addEventListener("click", nextImageSlide);
 
-addImagesId();
 addNavigationCircles();
 fillCircle(document.querySelector("div[data-id='0']"));
 
