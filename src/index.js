@@ -8,6 +8,7 @@ const imageCount = images.length;
 let currentId = 0;
 
 function nextImageSlide() {
+	advanceSlidesTimer.reset();
 	let leftValue = parseInt(getComputedStyle(imagesContainer).left);
 	unfillCircle();
 	if (
@@ -25,6 +26,7 @@ function nextImageSlide() {
 }
 
 function previousImageSlide() {
+	advanceSlidesTimer.reset();
 	let leftValue = parseInt(getComputedStyle(imagesContainer).left);
 	unfillCircle();
 	if (leftValue < 0) {
@@ -72,6 +74,30 @@ function addImagesId() {
 	}
 }
 
+function Timer(fn, time) {
+	let timer = setInterval(fn, time);
+
+	this.stop = function () {
+		if (timer) {
+			clearInterval(timer);
+			timer = null;
+		}
+		return this;
+	};
+
+	this.start = function () {
+		if (!timer) {
+			this.stop();
+			timer = setInterval(fn, time);
+		}
+		return this;
+	};
+
+	this.reset = function () {
+		return this.stop().start();
+	};
+}
+
 const previousImageButton = document.querySelector("button.previous-image");
 const nextImageButton = document.querySelector("button.next-image");
 
@@ -82,4 +108,4 @@ addImagesId();
 addNavigationCircles();
 fillCircle(document.querySelector("div[data-id='0']"));
 
-setInterval(nextImageSlide, 5000);
+let advanceSlidesTimer = new Timer(nextImageSlide, 5000);
