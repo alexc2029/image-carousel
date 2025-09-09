@@ -81,3 +81,5 @@ nextImageButton.addEventListener("click", nextImageSlide);
 addImagesId();
 addNavigationCircles();
 fillCircle(document.querySelector("div[data-id='0']"));
+
+setInterval(nextImageSlide, 5000);
